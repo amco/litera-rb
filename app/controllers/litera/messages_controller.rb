@@ -3,7 +3,7 @@ module Litera
     include Pagy::Backend
 
     def index
-      @pagy, @messages = pagy(Message.all)
+      @pagy, @messages = pagy(Message.ordered)
     end
 
     def show
