@@ -1,0 +1,27 @@
+<h1><%= Litera::Message.model_name.human(count: 2) %></h1>
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th><%= Litera::Message.human_attribute_name(:published_at) %></th>
+      <th><%= Litera::Message.human_attribute_name(:service) %></th>
+      <th><%= Litera::Message.human_attribute_name(:id) %></th>
+      <th><%= Litera::Message.human_attribute_name(:metadata) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= l(message.published_at) %></td>
+        <td><%= message.service %></td>
+        <td><%= message.external_id %></td>
+        <td><%= message.metadata.to_s.truncate(50).html_safe %></td>
+        <td><%= link_to t(".show"), message %></td>
+      </tr>
+    <% end %>
+  </body>
+</table>
+
+<%== pagy_nav(@pagy) %>

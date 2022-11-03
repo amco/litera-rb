@@ -1,0 +1,14 @@
+.litera table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.litera table th {
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.litera table th, td {
+  padding: 5px;
+}

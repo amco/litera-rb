@@ -1,0 +1,32 @@
+<h1>Message: <%= @message.external_id %></h1>
+
+<table>
+  <tbody>
+    <tr>
+      <th><%= Litera::Message.human_attribute_name(:published_at) %></th>
+      <td><%= l(@message.published_at) %></td>
+    </tr>
+
+    <tr>
+      <th><%= Litera::Message.human_attribute_name(:service) %></th>
+      <td><%= @message.service %></td>
+    </tr>
+
+    <tr>
+      <th><%= Litera::Message.human_attribute_name(:id) %></th>
+      <td><%= @message.external_id %></td>
+    </tr>
+
+    <tr>
+      <th><%= Litera::Message.human_attribute_name(:metadata) %></th>
+      <td><pre><%= JSON.pretty_generate(@message.metadata) %></pre></td>
+    </tr>
+
+    <tr>
+      <th><%= Litera::Message.human_attribute_name(:body) %></th>
+      <td><pre><%= JSON.pretty_generate(@message.body) %></pre></td>
+    </tr>
+  </body>
+</table>
+
+<%= link_to t(".back"), messages_path %>
