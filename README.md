@@ -31,6 +31,12 @@ Run pending migrations:
 rails db:migrate
 ```
 
+Add the following line to your `app/assets/config/manifest.js`:
+
+```javascript
+//= link litera/application.css
+```
+
 Lastly, mount litera engine in your `config/routes.rb`:
 
 ```bash
