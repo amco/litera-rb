@@ -13,6 +13,10 @@ RSpec.describe Litera::Message, type: :model do
     it { is_expected.to have_db_column(:updated_at).of_type(:datetime) }
   end
 
+  describe "Database indexes" do
+    it { is_expected.to have_db_index(:published_at) }
+  end
+
   describe "Validations" do
     it { is_expected.to validate_presence_of(:body) }
     it { is_expected.to validate_presence_of(:service) }

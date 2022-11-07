@@ -9,5 +9,7 @@ class CreateLiteraMessages < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+
+    add_index :litera_messages, :published_at
   end
 end

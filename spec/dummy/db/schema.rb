@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_02_211322) do
     t.datetime "published_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["published_at"], name: "index_litera_messages_on_published_at"
   end
 
 end
