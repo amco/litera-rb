@@ -11,6 +11,6 @@ Litera.setup do |config|
   # Define how the current user will be authorized ot not to access the
   # messages dashboard.
   # config.authorization = -> (user) do
-    # user.admin?
+  # user.admin?
   # end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Litera
   class MessagesController < ApplicationController
     include Pagy::Backend

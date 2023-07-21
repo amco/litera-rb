@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :litera_message, class: 'Litera::Message' do
+  factory :litera_message, class: "Litera::Message" do
     sequence(:external_id) { |n| n }
 
     service { :amazon_sqs }

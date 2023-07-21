@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Litera
   class Message < ApplicationRecord
     validates :body, presence: true

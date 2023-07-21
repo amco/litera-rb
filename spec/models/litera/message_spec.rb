@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Litera::Message, type: :model do
+RSpec.describe Litera::Message do
   describe "Database columns" do
     it { is_expected.to have_db_column(:body).of_type(:jsonb).with_options(default: {}) }
     it { is_expected.to have_db_column(:metadata).of_type(:jsonb).with_options(default: {}) }
@@ -26,15 +26,13 @@ RSpec.describe Litera::Message, type: :model do
   end
 
   describe ".ordered" do
-    let!(:message_1) { create(:litera_message, published_at: DateTime.current - 1.day) }
-    let!(:message_2) { create(:litera_message, published_at: DateTime.current) }
-    let!(:message_3) { create(:litera_message, published_at: DateTime.current + 1.day) }
+    let!(:older_message) { create(:litera_message, published_at: DateTime.current - 2.day) }
+    let!(:old_message) { create(:litera_message, published_at: DateTime.current - 1.day) }
+    let!(:new_message) { create(:litera_message, published_at: DateTime.current) }
 
-    it "returns messages order by published_at desc" do
+    it "returns messages ordered by published_at desc" do
       messages = described_class.ordered
-      expect(messages.first).to eql message_3
-      expect(messages.second).to eql message_2
-      expect(messages.third).to eql message_1
+      expect(messages.to_a).to eql [new_message, old_message, older_message]
     end
   end
 end
