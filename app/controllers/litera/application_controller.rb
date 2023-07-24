@@ -11,9 +11,9 @@ module Litera
     end
 
     def authorize_litera_user
-      if !Litera.authorization.call(litera_user)
-        raise Litera::Errors::NotAuthorized
-      end
+      return if Litera.authorization.call(litera_user)
+
+      raise Litera::Errors::NotAuthorized
     end
   end
 end
