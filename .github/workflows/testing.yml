@@ -1,0 +1,44 @@
+name: Testing
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  checks: write
+
+jobs:
+  test:
+    name: Running tests
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        ports: ['5432:5432']
+        env:
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: dummy_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Copy database.yml
+        run: cp spec/dummy/config/database.yml.example spec/dummy/config/database.yml
+
+      - name: Run tests
+        run: bundle exec rake
